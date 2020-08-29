@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>앱솔로 탭메뉴 만들기</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        display: grid;
+        height: 100%;
+        text-align: center;
+        background: #f2f2f2;
+      }
+
+      .container {
+        height: 80px;
+        width: 80cw;
+        line-height: 80pc;
+        background: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .container .menu {
+        display: flex;
+        position: relative;
+      }
+
+      .container .menu li {
+        list-style: none;
+        flex: 1;
+        font-size: 30px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .container .menu li a {
+        color: #f23b26;
+      }
+      .container .menu .li:hover a {
+        color: #f23b26;
+      }
+      .container .menu li:first-child a {
+        color: #f23b26;
+      }
+      .container .menu .line {
+        position: absolute;
+        height: 5px;
+        width: 20%;
+        background: #f12b15;
+        left: 0;
+        bottom: 0;
+        transition: all 0.3s ease;
+      }
+      .container.menu li:nth-child(2):hover ~ .line {
+        left: 20%;
+      }
+      .container.menu li:nth-child(3):hover ~ .line {
+        left: 40%;
+      }
+      .container.menu li:nth-child(4):hover ~ .line {
+        left: 60%;
+      }
+      .container.menu li:nth-child(5):hover ~ .line {
+        left: 80%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="menu">
+        <li>
+          <a href="#a">home</a>
+          <a href="#a">commnet</a>
+          <a href="#a">enevelope</a>
+          <a href="#a">heart</a>
+          <a href="#a">user</a>
+          <div class="line"></div>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

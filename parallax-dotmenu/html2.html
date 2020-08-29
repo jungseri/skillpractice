@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+
+    <title>Parallax</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+    <style>
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato';
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+/*컨테이너*/
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 78px; */
+}
+
+        /* nav */
+/*nav-headerbar*/
+#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+}
+
+.nav-headerbar {
+    background: black;
+    height: 62px;
+
+}
+
+.nav-headerbar h1 {
+    padding-left: 10px;
+    color: #ffffff;
+    line-height: 62px;
+    font-size: 24px;
+    display: inline-block;
+}
+
+/*메뉴바*/
+.manubar {
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 6px;
+    z-index: 9999;
+}
+
+.manubar span {
+    display: block;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 1);
+    color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: all 0.5s;
+}
+
+.manubar span::after,
+span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 1);
+    transition: all 0.5s;
+
+}
+
+.manubar span::after {
+    top: 15px;
+}
+
+.manubar span::before {
+    top: -15px;
+}
+
+.manubar.on span {
+    background: rgba(255, 255, 255, 0);
+
+}
+
+.manubar.on span::after {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.manubar.on span::before {
+    top: 0;
+    transform: rotate(-45deg);
+
+}
+
+/*nav-manubar_pop, 웹 표준형 보고 내려오게 디자인 해야함. */
+.nav-manubar_pop {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background: url(../IMG/manupop-bk.png) repeat-y;
+    background-size: cover;
+    z-index: 9999;
+}
+
+.nav-manubar_pop ul {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    transform: translate(0, -50%);
+}
+
+.nav-manubar_pop ul li a {
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.nav-manubar_pop ul li a.manubtn:hover {
+    background: rgba(36, 130, 174, 0.9);
+    transition:
+        box-shadow 0.34s ease, background 0.34s ease;
+    box-shadow:
+        inset 180px 0 0 0 rgba(36, 130, 174, 0.7);
+}
+
+.snsbar>a {
+    display: inline-block;
+
+}
+
+.snsbar>a>i {
+    font-size: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+        /* contents */
+        /* #contents {
+            text-align: center;
+            color: #fff;
+        } */
+
+        #contents>div {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* #contents>div h2 {
+            font-size: 70px;
+            font-weight: 200;
+            text-transform: uppercase;
+        } */
+
+        /* #contents>div h2 strong {
+            font-weight: 700;
+            font-style: italic;
+        } */
+
+        /*dot*/
+        #dot {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+
+        }
+
+        #dot li {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin: 22px 12px;
+
+        }
+
+        #dot li a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* border: 2px solid #ffffff; */
+            background: #aaaaaa;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: block;
+        }
+
+        #dot li a::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #aaaaaa;
+            border-radius: 20px;
+            /* box-shadow: 0 0 1px #fff; */
+            /* transform: scale(3); */
+            opacity: 0;
+            visibility: hidden;
+            /* transition:
+opacity 0.3s ease,transform 0.3s ease, visibility 0s 0.3s; */
+
+        }
+
+        #dot li.active a::after {
+            opacity: 1;
+            visibility: visible;
+            /* transform: scale(1);
+transition:
+opacity 0.3s ease,transform 0.3s ease; */
+        }
+
+        #dot li.active {}
+
+        #dot li.active a {}
+
+        #dot li a em {
+            display: none;
+        }
+        .sec01-bk {
+    width: 100%;
+    height: 100vh;
+    background: white;
+}
+
+.sec01-wrap {
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sec01-wrap img {
+    width: 340px;
+
+}
+
+.line {
+    flex: 1;
+    border-left: 10px solid black;
+    width: 50px;
+    height: 370px;
+    margin-top: 9vh;
+
+}
+
+.sec01-wrap h1 {
+    flex: 2;
+    margin-top: 9vh;
+    font-size: 80px;
+    height: 50%;
+
+}
+
+        /* section */
+        #section3 {
+            background: radial-gradient(ellipse farthest-corner at center top, #A3A1FF, #3A3897);
+        }
+
+        #section2 {
+            background: radial-gradient(ellipse farthest-corner at center bottom, #3AA17E, #00537E);
+        }
+
+        #section4 {
+            background: radial-gradient(ellipse farthest-corner at center top, #29ABE2, #4F00BC);
+        }
+
+        #section1 {
+            background: radial-gradient(ellipse farthest-corner at center top, #FF5300, #45145A);
+        }
+
+        #section5 {
+            background: radial-gradient(ellipse farthest-corner at center bottom, #852D91, #312A6C);
+        }
+
+        #section6 {
+            background: radial-gradient(ellipse farthest-corner at center top, #FBB03B, #D4145A);
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="nav-headerbar">
+            <h1>SE-RI’S PHOTOFOLO</h1>
+            <a href="#a" class="manubar">
+                <span></span>
+            </a>
+        </div>
+        <div class="nav-manubar_pop">
+            <ul>
+                <li><a href="#section1" class="manubtn active">Home</a></li>
+                <li><a href="#section2" class="manubtn">Intro</a></li>
+                <li><a href="#section3" class="manubtn">Portfolo</a></li>
+                <li><a href="#section4" class="manubtn">Contact</a></li>
+                <li>
+                    <div class="snsbar">
+                        <a href="https://open.kakao.com/o/s87eI0ec" class="kakaotalk"><i
+                                class="xi-kakaotalk"></i></a>
+                        <a href="https://github.com/jungseri" class="github"><i class="xi-github"></i></a>
+                        <a href="mailto::jjest2222@naver.com" class="mail"><i class="xi-gmail"></i></a>
+                    </div>
+                </li>
+                <!-- <li><a href="#section5">Contact</a></li> -->
+            </ul>
+        </div>
+
+    </nav>
+    <div id="dot">
+        <ul>
+            <li class="active"><a href="#"><em>menu1</em></a></li>
+            <li><a href="#"><em>menu2</em></a></li>
+            <li><a href="#"><em>menu3</em></a></li>
+            <li><a href="#"><em>menu4</em></a></li>
+    
+        </ul>
+    </div>
+
+    <div id="contents">
+        <div id="section1">
+     
+                    <div class="sec01-bk">
+                        <div class="sec01-wrap">
+                            <div>
+                                <figure>
+                                    <img src="../IMG/background_img2.png" alt="">
+                                </figure>
+                            </div>
+                            <div class="line"></div>
+                            <h1>SeRi’s
+                                Web&nbsp;Publisher
+                                Protfolo</h1>
+                        </div>
+                    </div>
+          
+        </div>
+        <div id="section2">
+            <h2>끓어 당기면 발끝이 춥고</h2>
+        </div>
+        <div id="section3">
+            <h2>밑으로 내리면 어깨가 싸늘하다.</h2>
+        </div>
+        <div id="section4">
+            <h2>그러나 긍정적인 사람은</h2>
+        </div>
+   
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        var dot = $("#dot > ul > li");
+        var cont = $("#contents > div");
+
+        dot.click(function (e) {
+            e.preventDefault();
+            var target = $(this);
+            var index = target.index();
+            //alert(index);
+            var section = cont.eq(index);
+            var offset = section.offset().top;
+            $("html,body").animate({
+                scrollTop: offset
+            }, 600, "easeInOutExpo");
+        });
+
+        $(window).scroll(function () {
+            var wScroll = $(this).scrollTop();
+
+            if (wScroll >= cont.eq(0).offset().top) {
+                dot.removeClass("active");
+                dot.eq(0).addClass("active");
+            }
+            if (wScroll >= cont.eq(1).offset().top) {
+                dot.removeClass("active");
+                dot.eq(1).addClass("active");
+            }
+            if (wScroll >= cont.eq(2).offset().top) {
+                dot.removeClass("active");
+                dot.eq(2).addClass("active");
+            }
+            if (wScroll >= cont.eq(3).offset().top) {
+                dot.removeClass("active");
+                dot.eq(3).addClass("active");
+            }
+            if (wScroll >= cont.eq(4).offset().top) {
+                dot.removeClass("active");
+                dot.eq(4).addClass("active");
+            }
+            if (wScroll >= cont.eq(5).offset().top) {
+                dot.removeClass("active");
+                dot.eq(5).addClass("active");
+            }
+        });
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

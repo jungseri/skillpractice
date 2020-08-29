@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        } */
+
+        /* .tab_content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+
+ */
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .conbox {
+            width: 300px;
+            height: 300px;
+            background: #aaa;
+            display: none;
+            /* position: relative; */
+        }
+
+        .btn {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /*버튼을 만들기위해서 라벨에 속성을 줄거임*/
+        label[for*="tab"] {
+            display: inline-block;
+            padding: 10px;
+            /* background: #ccc; */
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 2px;
+            border: 2px solid #ccc;
+        }
+
+        /*이제 input에 체크가 되었다면 컨텐츠영역이 보이는 스타일을 적용*/
+        input[id="tab01"]:checked~.con1 {
+            display: block;
+        }
+
+        input[id="tab02"]:checked~.con2 {
+            display: block;
+        }
+
+        input[id="tab03"]:checked~.con3 {
+            display: block;
+        }
+
+        /*버튼 활성화 시, 색이 바뀜 */
+        input[id="tab01"]:checked~.btn>label[for="tab01"] {
+            background: red;
+        }
+
+        input[id="tab02"]:checked~.btn>label[for="tab02"] {
+            background: red;
+        }
+
+        input[id="tab03"]:checked~.btn>label[for="tab03"] {
+            background: red;
+        }
+
+        /*input에 체크가 되면 input과 동일 선상에 있는 con1이 보임*/
+    </style>
+</head>
+
+<body>
+    <div class="tab_content">
+        <input type="radio" name="tabmenu" id="tab01" checked>
+        <input type="radio" name="tabmenu" id="tab02">
+        <input type="radio" name="tabmenu" id="tab03">
+
+
+        <!-- tab메뉴를 만들려면, input요소와 label요소가 id값으로 연결되는 속성값이 필요하고,
+    ~에 일반형제 선택자가 필요함
+    ~선택자에 예를 들자면, 
+    ul ~ p{스타일}
+    ul안의 모든 P에 스타일을 줄 수 있음. 다만, 동일 선상에 있어야하고 자식선택자는 
+    영향을 받지 않음. 
+    label을 클릭하면, input이 체크가 되면서 체크된 input아래 운영되는 클래스를 가지고 있는
+    요소가 보여지게하는 스타일을 적용해서 tab메뉴를 만들 수 있음.  -->
+
+        <!-- -----컨텐츠영역----- -->
+        <div class="conbox con1">컨텐츠1</div>
+        <div class="conbox con2">컨텐츠2</div>
+        <div class="conbox con3">컨텐츠3</div>
+
+        <!-- 하단의 버튼 부분 -->
+        <div class="btn">
+            <label for="tab01"></label>
+            <label for="tab02"></label>
+            <label for="tab03"></label>
+            <!-- 라벨이 id값으로 입력되어서, 라벨을 클릭해도 input에 체크가 됨. -->
+        </div>
+    </div>
+</body>
+
+</html>
