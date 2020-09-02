@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      input[type="radio"] {
-        display: none;
-      }
 
-      input[type="radio"] + label {
-        display: inline-block;
-        padding: 20px;
-        background: #ccc;
-        color: #999;
-        font-size: 14px;
-        cursor: pointer;
-        /*커서를 바꾸는 속성*/
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    input[type="radio"] {
+      display: none;
+    }
 
-      input[type="radio"]:hover + label {
-        background: #aaa;
-        color: #000;
-      }
+    input[type="radio"]+label {
+      display: inline-block;
+      padding: 20px;
+      background: #ccc;
+      color: #999;
+      font-size: 14px;
+      cursor: pointer;
+      /*커서를 바꾸는 속성*/
+    }
 
-      input[type="radio"]:checked + label {
-        background: #aaa;
-        color: #000;
-      }
+    input[type="radio"]:hover+label {
+      background: #aaa;
+      color: #000;
+    }
 
-      .conbox {
-        width: 500px;
-        height: 600px;
-        background: #aaa;
-        /* margin: 0 auto; */
-        display: none;
-      }
+    input[type="radio"]:checked+label {
+      background: #aaa;
+      color: #000;
+    }
 
-      input[id="tab01"]:checked ~ .con1 {
-        display: block;
-      }
+    .conbox {
+      width: 500px;
+      height: 600px;
+      background: #aaa;
+      /* margin: 0 auto; */
+      display: none;
+    }
 
-      input[id="tab02"]:checked ~ .con2 {
-        display: block;
-      }
+    input[id="tab01"]:checked~.con1 {
+      display: block;
+    }
 
-      input[id="tab03"]:checked ~ .con3 {
-        display: block;
-      }
-    </style>
-  </head>
+    input[id="tab02"]:checked~.con2 {
+      display: block;
+    }
 
-  <body>
-    <div class="tab_content">
-      <input type="radio" id="tab01" name="tabmenu" checked />
-      <label for="tab01">컨텐츠탭버튼01</label>
-      <input type="radio" id="tab02" name="tabmenu" />
-      <label for="tab02">컨텐츠탭버튼02</label>
-      <input type="radio" id="tab03" name="tabmenu" />
-      <label for="tab03">컨텐츠탭버튼03</label>
-      <div class="conbox con1">컨텐츠 내용1</div>
-      <div class="conbox con2">컨텐츠 내용2</div>
-      <div class="conbox con3">컨텐츠 내용3</div>
-    </div>
-  </body>
+    input[id="tab03"]:checked~.con3 {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tab_content">
+    <input type="radio" id="tab01" name="tabmenu" checked />
+    <label for="tab01">컨텐츠탭버튼01</label>
+    <input type="radio" id="tab02" name="tabmenu" />
+    <label for="tab02">컨텐츠탭버튼02</label>
+    <input type="radio" id="tab03" name="tabmenu" />
+    <label for="tab03">컨텐츠탭버튼03</label>
+    <div class="conbox con1">컨텐츠 내용1</div>
+    <div class="conbox con2">컨텐츠 내용2</div>
+    <div class="conbox con3">컨텐츠 내용3</div>
+  </div>
+</body>
+
 </html>
