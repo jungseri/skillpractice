@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #333;
+}
+
+.glide {
+  width: 1100px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.slide1,
+.slide2 {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 1000px;
+  /* margin: 0 5%; */
+}
+
+.glide__slide img {
+  width: 300px;
+}
+
+.glide__slide {
+  text-align: center;
+  /* filter: blur(6px); */
+  opacity: .7;
+  transition: .3s linear;
+}
+
+.glide__slide--active {
+  opacity: 1;
+  filter: none;
+  /* transform: scale(1.1); */
+}
+
+.glide__slides {
+  overflow: visible;
+}
+
+.none {
+  display: none;
+}
+
+.glide__slide a {
+  color: black;
+  text-align: center;
+  line-height: 30px;
+}
+
+.glide__slide a figcaption {
+  margin-bottom: 10px;
+}
+
+
+button {
+  background: #fff;
+  border: black 2px solid;
+  font-weight: bold;
+  padding: 3px 7px;
+  font-size: 18px;
+  opacity: 30%;
+}
+
+button:hover {
+  opacity: 70%;
+  transition: ease all 0.5s;
+}
+
+.slide1 .glide__arrow--left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.slide2 .glide__arrow--left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.slide1 .glide__arrow--right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.slide2 .glide__arrow--right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.glide__slide {
+  position: relative;
+
+}
+
+/* .slide_btn {
+  border: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.slide_btn p {
+  padding: 0;
+  margin: 0;
+
+} */
+
+.slideUpBtn {
+  /* padding: 12px 24px; */
+
+  /* background-color: transparent; */
+  /* border: 2px solid hsl(243, 80%, 62%); */
+  /* border-radius: 6px; */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(1, .15, .34, .92);
+}
+
+
+
+.slideUpBtn:hover span {
+  opacity: 0;
+  transform: translateY(-100%)
+}
+
+.slideUpBtn::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: translateY(100%);
+
+  transition: inherit;
+  transition: transform 0.5s cubic-bezier(1, .15, .34, .92);
+}
+
+.slideUpBtn::after {
+  content: '상세보기';
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: inherit;
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+}
+
+.slideUpBtn:hover::before {
+  transform: translateY(0) scale(3);
+  transition-delay: .025s;
+}
+
+.slideUpBtn:hover::after {
+  opacity: 1;
+  color: hsl(222, 100%, 95%);
+  transform: translateY(0);
+}
