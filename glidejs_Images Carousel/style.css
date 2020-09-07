@@ -28,19 +28,12 @@ body {
 
 .glide__slide {
   text-align: center;
-  /* filter: blur(6px); */
-  opacity: .7;
-  transition: .3s linear;
 }
 
-.glide__slide--active {
-  opacity: 1;
-  filter: none;
-  /* transform: scale(1.1); */
-}
+.glide__slide--active {}
 
 .glide__slides {
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 .none {
@@ -51,12 +44,12 @@ body {
   color: black;
   text-align: center;
   line-height: 30px;
+  text-decoration: none;
 }
 
 .glide__slide a figcaption {
   margin-bottom: 10px;
 }
-
 
 button {
   background: #fff;
@@ -98,81 +91,71 @@ button:hover {
 
 .glide__slide {
   position: relative;
-
+  overflow: hidden;
 }
 
-/* .slide_btn {
-  border: #fff;
+.slide_btn p {
+  /* border: #fff 1px solid; */
+  display: none;
+  color: #fff;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.slide_btn {
+  color: #fff;
+  width: 300px;
+  height: 212px;
+
+  margin: 0 auto;
+  border: #fff solid 1px;
+  display: none;
+}
+
+.glide__slide a:hover .slide_btn {
+  position: absolute;
+  top: 0;
+  left: 18.9%;
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  animation-name: line;
+  animation-duration: 0.5s;
+}
+
+.glide__slide a:hover .slide_btn p {
+  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
 }
 
-.slide_btn p {
-  padding: 0;
-  margin: 0;
+@-webkit-keyframes line {
+  0% {
+    transform: translateY(300px);
+    transition: transform 0.5s cubic-bezier(1, 0.15, 0.34, 0.92);
+  }
 
-} */
-
-.slideUpBtn {
-  /* padding: 12px 24px; */
-
-  /* background-color: transparent; */
-  /* border: 2px solid hsl(243, 80%, 62%); */
-  /* border-radius: 6px; */
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(1, .15, .34, .92);
+  100% {
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(1, 0.15, 0.34, 0.92);
+  }
 }
 
+/*미디어쿼리*/
+@media(max-width:1600px) {}
 
+@media(max-width:1200px) {
 
-.slideUpBtn:hover span {
-  opacity: 0;
-  transform: translateY(-100%)
+  .glide {
+    width: 100%;
+  }
 }
 
-.slideUpBtn::before {
-  content: "";
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
+@media(max-width:600px) {}
 
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  transform: translateY(100%);
-
-  transition: inherit;
-  transition: transform 0.5s cubic-bezier(1, .15, .34, .92);
-}
-
-.slideUpBtn::after {
-  content: '상세보기';
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  transition: inherit;
-  transform: translateY(100%);
-  width: 100%;
-  height: 100%;
-}
-
-.slideUpBtn:hover::before {
-  transform: translateY(0) scale(3);
-  transition-delay: .025s;
-}
-
-.slideUpBtn:hover::after {
-  opacity: 1;
-  color: hsl(222, 100%, 95%);
-  transform: translateY(0);
-}
+@media(max-width:400px) {}

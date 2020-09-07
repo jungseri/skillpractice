@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carousel / Slider con Glider.js</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="js/app.js"></script>
+</head>
+
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<section class="swiper-slide" id="section1">Slide 1
+				<div class="contenedor">
+					<div class="carousel ">
+						<!-- slide2 -->
+						<!-- glide__track?? -->
+						<div class="carousel__contenedor ">
+							<!-- 왼쪽버튼 -->
+							<button aria-label="Anterior" class="carousel__anterior">
+								<i class="fas fa-chevron-left"></i>
+							</button>
+							<!-- 내용 -->
+							<!-- glide__slides -->
+							<div class="carousel__lista">
+								<!-- glide__slide -->
+								<div class="carousel__elemento lightgallery">
+									<!-- glide__slide content-->
+									<img src="./img/product1-1.jpg" alt="Rock and Roll Hall of Fame">
+									<p>Rock and Roll Hall of Fame</p>
+
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/3.png" alt="Constitution Square - Tower I">
+									<p>Constitution Square - Tower I</p>
+
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/4.png" alt="Empire State Building">
+									<p>Empire State Building</p>
+
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/5.png" alt="Harmony Tower">
+									<p>Harmony Tower</p>
+								</div>
+
+								<div class="carousel__elemento">
+									<img src="img/6.png" alt="Empire State Building">
+									<p>Empire State Building</p>
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/7.png" alt="Harmony Tower">
+									<p>Harmony Tower</p>
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/8.png" alt="Empire State Building">
+									<p>Empire State Building</p>
+								</div>
+								<div class="carousel__elemento">
+									<img src="img/9.png" alt="Harmony Tower">
+									<p>Harmony Tower</p>
+								</div>
+							</div>
+							<!-- 오른쪽버튼 -->
+							<button aria-label="Siguiente" class="carousel__siguiente">
+								<i class="fas fa-chevron-right"></i>
+							</button>
+						</div>
+						<!-- dots디자인 -->
+						<div role="tablist" class="carousel__indicadores" style="display: none;"></div>
+					</div>
+				</div>
+			</section>
+			<section class="swiper-slide" id="section1">Slide 2</section>
+			<section class="swiper-slide" id="section1">Slide 3</section>
+			<section class="swiper-slide" id="section1">Slide 4</section>
+			<section class="swiper-slide" id="section1">Slide 5</section>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+
+
+</body>
+
+</html>
