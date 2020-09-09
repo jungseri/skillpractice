@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- xe-icon-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <style>
+        /*탭메뉴*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+
+        }
+
+        .web-portfolio {
+            padding-top: 50px;
+            width: 800px;
+            margin: 0 auto;
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .list-btn {
+            flex: 1
+        }
+
+        .list-content {
+            flex: 1
+        }
+
+        .list-btn {
+            margin: 12% 0;
+        }
+
+        .list-btn h1 a {
+            font-size: 35px;
+            border: none;
+            background: none;
+            text-align: center;
+            width: 100%;
+            padding: 5% 0;
+        }
+
+        .list-content {
+            width: 460px;
+            height: 400px;
+            position: relative;
+        }
+
+        .webcon-img {
+            width: 440px;
+            height: 380px;
+            border: black solid 5px;
+            background: #aaa;
+        }
+
+        .imgframe2 {
+            width: 440px;
+            height: 380px;
+            z-index: -1;
+            background: blue;
+            border: black solid 5px;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        .tab1img {
+            width: 100%;
+            height: 100%;
+            background: url(../img/portfoliosite2.png) no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
+
+        .hover-bg {
+            opacity: 0;
+        }
+
+        .webcon-img:hover .hover-bg {
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: ease all 0.5s;
+        }
+
+        .webcon-img:hover .bg-wrap h1 {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            margin: 10px;
+            border-bottom: 1px solid #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .webcon-img:hover .img-btn {
+            display: block;
+        }
+
+        .webcon-img:hover .img-btn p {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+        }
+
+
+        .tab2 {
+            background: red;
+        }
+
+        /* .work02 {
+            display: none;
+        }
+
+        .work03 {
+            display: none;
+        } */
+
+        .tab3 {
+            background: yellow;
+        }
+
+
+
+        /*팝업*/
+        .web-portfolio_popup {
+            z-index: 9990;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .web-portfolio_popup .popup {
+            width: 900px;
+            height: 510px;
+            /* border: 5px solid black; */
+            /* background: url(../img/popup01.png);
+  background-size: cover; */
+            /* background: #ffffff; */
+            /* z-index: 9999; */
+            position: relative;
+        }
+
+        .popup {
+            display: none;
+        }
+
+        .close {
+            border: none;
+            background: none;
+            font-size: 50px;
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            z-index: 50;
+        }
+
+        .popupwrap {
+            position: relative;
+            display: flex;
+            height: 500px;
+        }
+
+        .popup-img {
+            width: 37%;
+            height: 485px;
+            background: url(../img/yes24movie.svg) no-repeat 0 -15px;
+            background-size: cover;
+            border: 5px solid black;
+            z-index: 10;
+        }
+
+        .popup-content {
+            width: 70%;
+            margin-top: 20px;
+            z-index: 10;
+            padding: 2% 3%;
+        }
+
+        .popupframe {
+            width: 880px;
+            height: 491px;
+            border: 5px solid black;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            background: #ffffff;
+        }
+
+        .popup-content h1 {
+            font-size: 36px;
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+        }
+
+        .popup-content h3 {
+            font-size: 18px;
+            padding: 10px;
+            color: #555;
+        }
+
+        .popup-content p {
+            font-size: 14px;
+            color: #555;
+            padding: 1% 10px;
+        }
+
+        .popup2-txtbox2 {
+            font-size: 14px;
+            color: #aaa;
+            padding: 10px;
+        }
+
+        /*버튼*/
+        .popup-btnwrap {
+            display: flex;
+            position: absolute;
+            right: 19px;
+            bottom: 10px;
+        }
+
+        .popup-btnwrap div {
+            margin: 10px 5px;
+        }
+
+        .buttonOverlay {
+            width: 120px;
+            text-align: center;
+            padding: 12px 24px;
+            position: relative;
+            color: #333333;
+        }
+
+        .buttonOverlay span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .buttonOverlay::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .buttonOverlay::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: 1px solid #474e51;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .buttonOverlay:hover::before {
+            transform: translate(6px, -4px);
+        }
+
+        .buttonOverlay:hover::after {
+            transform: translate(-6px, 4px);
+        }
+
+
+
+        @media (max-width:1100px) {}
+
+        @media (max-width:800px) {
+            .web-portfolio {
+                width: 100%;
+                flex-direction: column-reverse;
+                /*     flex-wrap: wrap; */
+
+            }
+
+            .list-btn {
+                flex: none;
+            }
+
+            .list-content {
+                width: 90%;
+                flex: none;
+                margin: 0 auto;
+            }
+
+            .list-btn {
+                margin: 0 auto;
+            }
+
+            .list-btn h1 button {
+                padding: 0;
+            }
+
+            .webcon-img {
+                width: 97%;
+            }
+
+            .imgframe2 {
+                width: 97%;
+            }
+        }
+
+        @media (max-width:600px) {
+            .webcon-img {
+                width: 96%;
+            }
+
+            .imgframe2 {
+                width: 96%;
+            }
+        }
+
+        @media (max-width:500px) {
+
+            .list-content {
+                width: 360px;
+                height: 300px;
+
+            }
+
+            .webcon-img {
+                width: 340px;
+                height: 280px;
+            }
+
+
+            .imgframe2 {
+                width: 340px;
+                height: 280px;
+
+            }
+        }
+
+
+        @media (max-width:360px) {
+
+            .list-content {
+                width: 90%;
+                height: 270px;
+            }
+
+            .webcon-img {
+                width: 94%;
+                height: 250px;
+            }
+
+            .imgframe2 {
+                width: 94%;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section style="position:relative;">
+        <div class="web-portfolio">
+            <div class="list-btn">
+                <h1>
+                    <a href="#work01" class="active"><i class="xi-mobile"></i>
+                        1. Portfoliosite</a>
+                </h1>
+                <h1>
+                    <a href="#work02"><i class="xi-mobile"></i>
+                        2. Portfoliosite</a></h1>
+                <h1>
+                    <a href="#work03"><i class="xi-mobile"></i>
+                        3. Portfoliosite</a></h1>
+            </div>
+
+            <div class="list-content">
+                <div class="tabcon webcon1" id="work01">
+                    <div class="tab1 webcon-img">
+                        <div class="tab1img">
+                            <div class="hover-bg">
+                                <div class="bg-wrap">
+                                    <h1>Portfoliosite</h1>
+                                    <span class="img-btn">
+                                        <p>상세보기</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabcon webcon2" id="work02">
+                    <div class="tab2 webcon-img">
+                        <div class="tab2img">
+                            <div class="hover-bg">
+                                <div class="bg-wrap">
+                                    <h1>Portfoliosite</h1>
+                                    <span class="img-btn">
+                                        <p>상세보기</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tabcon webcon3" id="work03">
+                    <div class="tab3 webcon-img">
+                        <div class="tab3img">
+                            <div class="hover-bg">
+                                <div class="bg-wrap">
+                                    <h1>Portfoliosite</h1>
+                                    <span class="img-btn">
+                                        <p>상세보기</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="imgframe2"></div>
+            </div>
+        </div>
+        <div class="web-portfolio_popup wrap">
+            <div class="popup popup1">
+                <button class="close"><i class="xi-close-square-o"></i></button>
+                <div class="popupwrap">
+                    <div class="popup-img"></div>
+                    <div class="popup-content">
+                        <h1><i class="xi-mobile"></i> Yes24 Movie web</h1>
+                        <h3>YES24 영화예매어플을 리디자인한 고정형 모바일웹.</h3>
+                        <div class="popup2-txtbox1">
+                            <p> working time : 2020.05~06 </p>
+                            <p> degree of participation : Design(100%), Publishing(70%) </p>
+                            <p> Tool : 제이쿼리, html, css, 피그마, 포토샵, 일러스트 </p>
+                            <p> Library Used : slick </p>
+                            <p> Available browsers : chrom, safari </p>
+                        </div>
+                        <div class="popup2-txtbox2">
+                            영화예매만을 원하는 고객을 타겟으로,
+                            사용되는 목적에 충실할 수 있도록 심플하게 디자인
+                            하였습니다.
+                            메인화면에 slick을 사용한 슬라이드를
+                            포인트로 고객이 최신 영화를 바로 접근 할수 있도록 하였고,
+                            슬라이드에 버튼을 통해, 빠른 예매가 가능하도록 디자인하였습니다.
+                            불필요한 메뉴를 숨기고, 필요한 메뉴는 탭메뉴를 활용하여,
+                            고객의 편의성을 높였습니다.</div>
+                        <div class="popup-btnwrap">
+                            <div class="popupbtn1">
+                                <div class="buttonOverlay">
+                                    <a
+                                        href="https://jungseri.github.io/mobileweb_movieapp/html/main_tab1.html"></a><span>사이트
+                                        보러가기</span></a>
+                                </div>
+                            </div>
+                            <div class="popupbtn2">
+                                <div class="buttonOverlay">
+                                    <a href="https://github.com/jungseri/mobileweb_movieapp"><span>소스보기</span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="popupframe"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        //링크를 클릭하면 할일
+        var tabAnchor = $(".list-btn h1 a"),
+            tabpanel = $(".tabcon")
+
+        tabpanel.hide();
+        $("#work01").show();
+
+        tabAnchor.click(function (e) {
+            e.preventDefault();
+
+            tabAnchor.removeClass("active"); 
+            $(this).addClass("active"); 
+
+            tabpanel.hide();
+            var $target = $(this).attr('href');
+            console.log($target);
+            $($target).show();
+
+        });
+        /*팝업*/
+        $(".webcon1").click(function () {
+            $(".popup1").show();
+        });
+        $(".close").click(function () {
+            $(".popup1").hide();
+        });
+        $(".webcon2").click(function () {
+            $(".popup2").show();
+        });
+        $(".close").click(function () {
+            $(".popup2").hide();
+        });
+    </script>
+</body>
+
+</html>
